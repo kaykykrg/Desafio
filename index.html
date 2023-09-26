@@ -1,43 +1,61 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Consulta e Criação de Nota Fiscal</title>
+    <link rel="shortcut icon" href="css/fontes e fotos/favicon.ico" type="image/x-icon">
+    <title>Inteligencia Fiscal</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Consulta e Criação de Nota Fiscal</h1>
+    <!-- CABECALHO-->
+    <header>
+        <h1> Consulta e criação de nota Fiscal </h1>
+        <p><strong>Vizualizar, consultar, e administrar suas notas fiscais</strong></p>
+        <!--LINKS-->
+        <nav>
+            <li>
+                <a href="https://www.nfe.fazenda.gov.br/portal/principal.aspx">Site da Fazenda</a>
+                <a href="historico.html">Historico de NFe</a>
+            </li>
+        </nav>
+    </header>
+    <main>        
+            <!-- Formulário para consulta de nota fiscal -->
+            <form method="post" action="consulta_nf.php" class="form">
+                <div class="form-group">
+                    <h2>Consultar NFe</h2>
+                    <label for="numero_nota_consulta">Número da Nota Fiscal:</label>
+                    <input type="text" name="numero_nota_consulta" id="numero_nota_consulta" class="input-field">
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Consultar" class="submit-button">
+                </div>
+            </form>
         
-        <!-- Formulário para consulta de nota fiscal -->
-        <form method="post" action="consulta_nf.php" class="form">
-            <div class="form-group">
-                <label for="numero_nota_consulta">Número da Nota Fiscal:</label>
-                <input type="text" name="numero_nota_consulta" id="numero_nota_consulta" class="input-field">
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Consultar" class="submit-button">
-            </div>
-        </form>
-        
-        <!-- Formulário para criação de nota fiscal (exemplo) -->
-        <form method="post" action="cria_nf.php" class="form">
-            <div class="form-group">
-                <h2>Criar Nova Nota Fiscal (Exemplo)</h2>
-                <label for="cliente_nome">Nome do Cliente:</label>
-                <input type="text" name="cliente_nome" id="cliente_nome" class="input-field">
-            </div>
-            <div class="form-group">
-                <label for="data_emissao">Data de Emissão:</label>
-                <input type="date" name="data_emissao" id="data_emissao" class="input-field">
-            </div>
-            <div class="form-group">
-                <label for="total">Total:</label>
-                <input type="text" name="total" id="total" class="input-field">
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Criar Nota Fiscal" class="submit-button">
-            </div>
-        </form>
-    </div>
+            <!-- Formulário para criação de nota fiscal (exemplo) -->
+            
+            <form method="post" action="cria_nf.php" class="form">
+                <div class="form-group">
+                    <h2>Criar Nova Nota Fiscal (Exemplo)</h2>
+                    <label for="cliente_nome">Nome do Cliente:</label>
+                    <input type="text" name="cliente_nome" id="cliente_nome" class="input-field">
+                </div>
+                <div class="form-group">
+                    <label for="data_emissao">Data de Emissão:</label>
+                    <input type="date" name="data_emissao" id="data_emissao" class="input-field">
+                </div>
+                <div class="form-group">
+                    <label for="total">Total:</label>
+                    <input type="text" name="total" id="total" class="input-field">
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Criar Nota Fiscal" class="submit-button">
+                </div>
+            </form>
+    </main>
+
+    <!-- RODAPE -->      
+    <footer> 
+        <p>Desenvolvido por DiasKigs e Kruger</p>
+    </footer>
 </body>
 </html>

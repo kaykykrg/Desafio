@@ -1,18 +1,18 @@
--- Crie a tabela de clientes
+-- tabela de clientes
 CREATE TABLE clientes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
     cpf_cnpj VARCHAR(20) NOT NULL
 );
 
--- Crie a tabela de produtos
+-- tabela de produtos
 CREATE TABLE produtos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
     preco DECIMAL(10, 2) NOT NULL
 );
 
--- Crie a tabela de notas fiscais
+-- tabela de notas fiscais
 CREATE TABLE notas_fiscais (
     id INT AUTO_INCREMENT PRIMARY KEY,
     cliente_id INT,
@@ -21,7 +21,7 @@ CREATE TABLE notas_fiscais (
     FOREIGN KEY (cliente_id) REFERENCES clientes(id)
 );
 
--- Crie a tabela de itens de notas fiscais
+-- tabela de itens de notas fiscais
 CREATE TABLE itens_nf (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nota_fiscal_id INT,
