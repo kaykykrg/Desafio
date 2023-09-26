@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Consulta e Criação de Nota Fiscal</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Consulta e Criação de Nota Fiscal</h1>
+        
+        <!-- Formulário para consulta de nota fiscal -->
+        <form method="post" action="consulta_nf.php" class="form">
+            <div class="form-group">
+                <label for="numero_nota_consulta">Número da Nota Fiscal:</label>
+                <input type="text" name="numero_nota_consulta" id="numero_nota_consulta" class="input-field">
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Consultar" class="submit-button">
+            </div>
+        </form>
+        
+        <!-- Formulário para criação de nota fiscal (exemplo) -->
+        <form method="post" action="cria_nf.php" class="form">
+            <div class="form-group">
+                <h2>Criar Nova Nota Fiscal (Exemplo)</h2>
+                <label for="cliente_nome">Nome do Cliente:</label>
+                <input type="text" name="cliente_nome" id="cliente_nome" class="input-field">
+            </div>
+            <div class="form-group">
+                <label for="data_emissao">Data de Emissão:</label>
+                <input type="date" name="data_emissao" id="data_emissao" class="input-field">
+            </div>
+            <div class="form-group">
+                <label for="total">Total:</label>
+                <input type="text" name="total" id="total" class="input-field">
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Criar Nota Fiscal" class="submit-button">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
