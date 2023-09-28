@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="shortcut icon" href="css/fontesefotos/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="css/fontes e fotos/favicon.ico" type="image/x-icon">
     <title>Inteligencia Fiscal</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
     <!-- CABECALHO-->
-    <div class="interface">
-        <header>
-            <h1> Consulta e criação de nota Fiscal </h1>
-            <p><strong>Vizualizar, consultar, e administrar suas notas fiscais</strong></p>
-            <!--LINKS-->
-            <nav>
-                <li>
-                    <a href="https://www.nfe.fazenda.gov.br/portal/principal.aspx">Site da Fazenda</a>
-                    <a href="#page2">Historico de NFe</a>
-                </li> 
-            </nav>
-        </header>              
-        <section class="page1">
+    <header>
+        <h1> Consulta e criação de nota Fiscal </h1>
+        <p><strong>Vizualizar, consultar, e administrar suas notas fiscais</strong></p>
+        <!--LINKS-->
+        <nav>
+            <li>
+                <a href="https://www.nfe.fazenda.gov.br/portal/principal.aspx">Site da Fazenda</a>
+                <a href="lerxml.php">Historico de NFe</a>
+            </li>
+        </nav>
+    </header>
+    <main>        
             <!-- Formulário para consulta de nota fiscal -->
-            <form method="post" action="consulta_nf.php" class="form1">
+            <form method="post" action="consulta_nf.php" class="form">
                 <div class="form-group">
                     <h2>Consultar NFe</h2>
                     <label for="numero_nota_consulta">Número da Nota Fiscal:</label>
@@ -31,8 +30,9 @@
                     <input type="submit" value="Consultar" class="submit-button">
                 </div>
             </form>
+        
             <!-- Formulário para criação de nota fiscal (exemplo) -->
-
+            
             <form method="post" action="cria_nf.php" class="form">
                 <div class="form-group">
                     <h2>Criar Nova Nota Fiscal (Exemplo)</h2>
@@ -51,23 +51,11 @@
                     <input type="submit" value="Criar Nota Fiscal" class="submit-button">
                 </div>
             </form>
-        </section>
-            <!--PAGINA DO HISTORICO DE  NFE-->
-        <section id="page2">
-            <div class="mainpg2">
-                <div class="h2">
-                    <h2> Historico das Notas Fiscais</br>Eletronicas </h1>
-                </div>
-                <div class="hist">
-                    <p><strong>NOME | PRODUTO | DATA | PREÇO | QTD | CNPJouCPF | VERIF</strong></p>
-                </div>
-            </div>
-        </section>
-          <!-- RODAPE -->
-        <footer>
-            <p>Desenvolvido por DiasKigs e Kruger</p>
-        </footer>
-    </div>
+    </main>
 
+    <!-- RODAPE -->      
+    <footer> 
+        <p>Desenvolvido por DiasKigs e Kruger</p>
+    </footer>
 </body>
 </html>

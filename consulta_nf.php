@@ -14,22 +14,6 @@ if ($conn->connect_error) {
 }
 
 
-//////////////////////////////////////////////////////////////
-// Dados do novo cliente
-$nomeCliente = "Dias";
-$cpfCnpjCliente = "1234567890";
-
-// Dados da nota fiscal
-$clienteId = 1; // Substitua pelo ID do cliente correspondente
-$dataEmissao = "2023-09-26"; // Data da emissão da nota fiscal (substitua pela data correta)
-$total = 100.00; // Substitua pelo valor total da nota fiscal
-
-///////////////////////////////////////////////////////////////
-
-
-
-
-
 if (isset($_POST['numero_nota_consulta'])) {
     $numero_nota = $_POST['numero_nota_consulta'];
 

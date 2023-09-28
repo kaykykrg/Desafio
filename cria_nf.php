@@ -5,48 +5,46 @@ $username = "root";  // Seu nome de usuário do MySQL
 $password = "";             // Deixe a senha em branco temporariamente
 $dbname = "banco";          // O nome do banco de dados que você deseja usar
 
-// Dados do cliente (substitua com os dados do cliente)
-$cliente_nome = "Nome do Cliente";
-$cliente_cpf_cnpj = "1234567890";
-
-// Dados da nota fiscal
-$data_emissao = "2023-09-25"; // Data de emissão da nota fiscal
-$total = 100.00;               // Total da nota fiscal
-
-// Criar uma conexão
-$conn = new mysqli($servername, $username, $password, $dbname);
-
 // Verificar a conexão
+$conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Conexão falhou: " . $conn->connect_error);
 }
 
-// Iniciar uma transação
-$conn->begin_transaction();
+// Obter o nome do cliente do formulário
+$cliente_nome = $_POST["cliente_nome"];
 
-// Inserir o cliente se ele não existir
-$stmt = $conn->prepare("INSERT INTO clientes (nome, cpf_cnpj) VALUES (?, ?)");
-$stmt->bind_param("ss", $cliente_nome, $cliente_cpf_cnpj);
+// Consultar o banco de dados para obter o ID do cliente com base no nome
+$consulta_cliente = "SELECT id FROM clientes WHERE nome = '$cliente_nome'";
+$resultado_cliente = $conn->query($consulta_cliente);
 
-if ($stmt->execute()) {
-    $cliente_id = $conn->insert_id; // Obter o ID do cliente recém-criado
+if ($resultado_cliente->num_rows > 0) {
+    // Se o cliente existir, obtenha o ID
+    $row = $resultado_cliente->fetch_assoc();
+    $cliente_id = $row["id"];
 } else {
-    echo "Erro ao inserir cliente: " . $stmt->error;
-    $conn->rollback(); // Reverter a transação em caso de erro
-    $conn->close();
-    exit();
+    // Se o cliente não existir, crie um novo cliente
+    $inserir_cliente = "INSERT INTO clientes (nome) VALUES ('$cliente_nome')";
+    if ($conn->query($inserir_cliente) === TRUE) {
+        // Após a criação do cliente, obtenha o ID do novo cliente
+        $cliente_id = $conn->insert_id;
+    } else {
+        echo "Erro ao criar cliente: " . $conn->error;
+        exit; // Encerre o script se houver um erro na criação do cliente
+    }
 }
 
-// Inserir a nota fiscal associada ao cliente
-$stmt = $conn->prepare("INSERT INTO notas_fiscais (cliente_id, data_emissao, total) VALUES (?, ?, ?)");
-$stmt->bind_param("iss", $cliente_id, $data_emissao, $total);
+// Agora você pode obter os outros dados do formulário
+$data_emissao = $_POST["data_emissao"];
+$total = $_POST["total"];
 
-if ($stmt->execute()) {
-    echo "Nota fiscal criada com sucesso.";
-    $conn->commit(); // Confirmar a transação
+// Inserir os dados no banco de dados
+$sql = "INSERT INTO notas_fiscais (cliente_id, data_emissao, total) VALUES ('$cliente_id', '$data_emissao', '$total')";
+
+if ($conn->query($sql) === TRUE) {
+    echo "Nota fiscal criada com sucesso!";
 } else {
-    echo "Erro ao criar a nota fiscal: " . $stmt->error;
-    $conn->rollback(); // Reverter a transação em caso de erro
+    echo "Erro ao criar nota fiscal: " . $conn->error;
 }
 
 // Fechar a conexão com o banco de dados
